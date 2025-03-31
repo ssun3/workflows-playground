@@ -1,0 +1,24 @@
+---
+name: test output
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+jobs:
+  test-output:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4.1.0
+
+      - name: Set output
+        id: set-output
+        run: |
+          bash ./build/set_output.sh
+
+      - name: Get output
+        id: get-output
+        run: |
+          echo "The output is ${{ steps.set-output.outputs.output }}"
