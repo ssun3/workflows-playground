@@ -16,7 +16,8 @@ jobs:
       - name: Set output
         id: set-output
         run: |
-          bash ./build/set_output.sh
+          chmod +x ./build/set_output.sh
+          ./build/set_output.sh
 
       - name: Get output
         id: get-output
