@@ -7,19 +7,17 @@ on:
   workflow_dispatch:
 
 jobs:
-  test-output:
+  example:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout
-        uses: actions/checkout@v4.1.0
+      - name: Checkout repo
+        uses: actions/checkout@v4
 
-      - name: Set output
-        id: set-output
+      - name: Run output script
+        id: greet
         run: |
           chmod +x ./build/set_output.sh
           ./build/set_output.sh
 
-      - name: Get output
-        id: get-output
-        run: |
-          echo "The output is '${{ steps.set-output.outputs.output }}'"
+      - name: Use output
+        run: echo "Message was '${{ steps.greet.outputs.outout }}'"
