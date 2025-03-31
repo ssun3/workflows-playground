@@ -22,4 +22,4 @@ jobs:
       - name: Get output
         id: get-output
         run: |
-          echo "The output is ${{ steps.set-output.outputs.output }}"
+          echo "The output is '${{ steps.set-output.outputs.output }}'"
