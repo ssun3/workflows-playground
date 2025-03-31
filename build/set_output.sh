@@ -1,6 +1,6 @@
 #!/bin/bash
 
 message="Hello, world!"
-echo ::set-output name=outout::$message
+echo "outout=$message" >>"$GITHUB_OUTPUT"
 
 exit 0
