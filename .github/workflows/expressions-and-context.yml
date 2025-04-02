@@ -1,0 +1,36 @@
+name: Expressions and Context
+on: [push, pull_request, issues, workflow_dispatch]
+
+jobs:
+  using-expressions-and-contexts:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Expressions
+        id: expressions
+        run: |
+          echo ${{ 1 }}
+          echo ${{ 1.0 }}
+          echo ${{ 'string' }}
+          echo ${{ 1 > 2 }}
+          echo ${{ 'string' == 'string' }}
+          echo ${{ true && false }}
+          echo ${{ true || (false && true) }}
+          echo ${{ github.ref }}
+          echo ${{ github.ref_name }}
+          echo ${{ github.ref_type }}
+          echo ${{ github.run_id }}
+          echo ${{ github.run_number }}
+          echo ${{ github.run_attempt }}
+          echo ${{ github.workflow }}
+          echo ${{ github.event_name }}
+          echo ${{ github.event.inputs.string }}
+          echo ${{ github.event.inputs.number }}
+          echo ${{ github.event.inputs.option }}
+      - name: Dump Contexts
+        run: |
+          echo " ${{ toJson(github) }}"
+          echo " ${{ toJson(job) }}"
+          echo " ${{ toJson(runner) }}"
+          echo " ${{ toJson(secrets) }}"
+          echo " ${{ toJson(steps) }}"
+          echo " ${{ toJson(needs) }}"
