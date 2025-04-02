@@ -15,17 +15,6 @@ jobs:
           echo ${{ 'string' == 'string' }}
           echo ${{ true && false }}
           echo ${{ true || (false && true) }}
-          echo ${{ github.ref }}
-          echo ${{ github.ref_name }}
-          echo ${{ github.ref_type }}
-          echo ${{ github.run_id }}
-          echo ${{ github.run_number }}
-          echo ${{ github.run_attempt }}
-          echo ${{ github.workflow }}
-          echo ${{ github.event_name }}
-          echo ${{ github.event.inputs.string }}
-          echo ${{ github.event.inputs.number }}
-          echo ${{ github.event.inputs.option }}
       - name: Dump Contexts
         run: |
           echo " ${{ toJson(github) }}"
